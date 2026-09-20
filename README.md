@@ -98,7 +98,11 @@ npx playwright test
 インストール済みGoogle Chromeを使う場合は `PLAYWRIGHT_CHANNEL=chrome` を指定します。
 PowerShellでは `$env:PLAYWRIGHT_CHANNEL='chrome'` を設定してから実行します。
 テストは外部CTA先を実際に開かず、設定されたURLだけを検査します。
-CIはビルド・単体テスト・ブラウザテストのみで、デプロイは行いません。
+mainへの更新時に、ビルド・単体テスト・ブラウザテストを通過したdistをGitHub Pagesへ公開します。
+公開URL: https://onebe-inc.github.io/vaizo_ai-community/
+CTAは指定された https://lin.ee/7B8VhdZi へ誘導します。
+規約リンク等の確定まではreleaseReady=falseを維持し、検索エンジンにはnoindexを指定します。
+noindexはアクセス制限ではなく、ページはURLを知る誰でも閲覧できます。
 
 ## 素材
 

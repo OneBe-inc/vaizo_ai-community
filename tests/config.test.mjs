@@ -7,8 +7,8 @@ import {
   assertReleaseReady,
 } from "../scripts/config.mjs";
 import { siteConfig } from "../site-config.js";
-test("CTA defaults to safe unconfigured mode", () =>
-  assert.equal(resolveConfig(siteConfig).ctaUrl, ""));
+test("CTA defaults to the approved destination", () =>
+  assert.equal(resolveConfig(siteConfig).ctaUrl, "https://lin.ee/7B8VhdZi"));
 test("only https destinations without credentials are accepted", () => {
   for (const s of [
     "",

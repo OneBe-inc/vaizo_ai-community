@@ -27,6 +27,12 @@ test("page renders without script errors or missing images", async ({
 test("unconfigured CTA has honest dialog and restores focus", async ({
   page,
 }) => {
+  await page.route("**/site-config.js", (route) =>
+    route.fulfill({
+      contentType: "text/javascript",
+      body: 'export const siteConfig = {ctaUrl:"",releaseReady:false};',
+    }),
+  );
   await page.goto("/");
   const cta = page.locator(".hero-copy [data-cta]");
   await cta.click();
@@ -45,6 +51,14 @@ test("FAQ expands with keyboard", async ({ page }) => {
   await expect(page.locator("details").nth(1)).toContainText(
     "操作・構築はご本人",
   );
+});
+
+test("published CTA uses the approved destination", async ({ page }) => {
+  await page.goto("/");
+  for (const cta of await page.locator("[data-cta]").all()) {
+    await expect(cta).toHaveAttribute("href", "https://lin.ee/7B8VhdZi");
+  }
+  await expect(page.locator("[data-unconfigured]")).toBeHidden();
 });
 test("configured CTA points to given https URL without contacting it", async ({
   page,
