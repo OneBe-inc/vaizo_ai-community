@@ -1,0 +1,21 @@
+{
+  "name": "vaizo-ai-community",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "VAIZO AI実践コミュニティ landing page",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/serve.mjs --dist",
+    "test": "node --test tests/*.test.mjs",
+    "check:release": "node scripts/build.mjs --release"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "sharp": "^0.35.4"
+  }
+}
