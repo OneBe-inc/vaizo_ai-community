@@ -28,6 +28,8 @@
     />
     <link rel="stylesheet" href="./styles.css" />
     <script type="module" src="./main.js"></script>
+    <script type="module" src="./assets/hero-motion.js"></script>
+    <script type="module" src="./assets/section-motion.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">本文へスキップ</a>
@@ -53,6 +55,11 @@
     </header>
     <main id="main">
       <section class="hero dark" id="top" aria-labelledby="hero-title">
+        <canvas class="hero-motion" aria-hidden="true"></canvas>
+        <div class="hero-particles" aria-hidden="true"></div>
+        <button class="motion-toggle" type="button" aria-pressed="false" hidden>
+          背景の動きを停止
+        </button>
         <div class="container hero-layout">
           <div class="hero-copy">
             <p class="eyebrow">中小企業経営者のためのAI実践コミュニティ</p>
@@ -73,14 +80,6 @@
             <p class="hero-price">
               月額 <strong>9,800</strong> 円 <span>／ 個人会員制</span>
             </p>
-          </div>
-          <div class="hero-art" aria-hidden="true">
-            <p class="hero-english">
-              Work <br />with AI.<small>Focus on what you love.</small>
-            </p>
-            <span class="network-label label-one">業務整理</span
-            ><span class="network-label label-two">質問</span
-            ><span class="network-label label-three">実践</span>
           </div>
         </div>
         <div class="benefit-strip">
@@ -107,6 +106,14 @@
           id="problem"
           aria-labelledby="problem-title"
         >
+          <button
+            class="problem-motion-toggle"
+            type="button"
+            aria-pressed="false"
+            hidden
+          >
+            背景の動きを停止
+          </button>
           <div class="container">
             <p class="section-label">PROBLEM</p>
             <h2 id="problem-title">
@@ -249,7 +256,11 @@
           </div>
         </section>
 
-        <section class="section roadmap" aria-labelledby="roadmap-title">
+        <section
+          class="section roadmap"
+          id="roadmap"
+          aria-labelledby="roadmap-title"
+        >
           <div class="container">
             <p class="section-label">FIRST 30 DAYS</p>
             <h2 id="roadmap-title">
@@ -289,64 +300,90 @@
         </section>
       </div>
 
-      <section class="section approach dark" aria-labelledby="approach-title">
-        <div class="container approach-layout">
-          <div>
-            <p class="section-label">OUR APPROACH</p>
-            <h2 id="approach-title">
-              AIへの指示の前に、<br />仕事そのものを整理する。
-            </h2>
-            <p>
-              M&amp;Aの現場で多様な業務に触れてきた経験をもとに、<br
-                class="desktop-break"
-              />業務フローや必要な情報、人が判断する部分を一緒に整理します。
-            </p>
-            <p class="byline">VAIZO <strong>橋本 友太郎</strong></p>
-          </div>
-          <ol class="process" aria-label="支援の考え方">
-            <li>業務理解</li>
-            <li>分解</li>
-            <li>実践</li>
-          </ol>
-        </div>
-      </section>
-
-      <section
-        class="section membership dark"
-        id="membership"
-        aria-labelledby="membership-title"
-      >
-        <div class="container">
-          <p class="section-label">MEMBERSHIP</p>
-          <h2 id="membership-title">
-            実践を続けるための、<br class="mobile-break" />シンプルなプラン。
-          </h2>
-          <div class="price-panel">
-            <div class="price-summary">
-              <p class="plan-label">個人会員プラン</p>
-              <p class="price">
-                <span>月額</span><strong>9,800</strong><span>円</span>
+      <div class="trust-zone">
+        <section
+          class="section approach approach--portrait dark"
+          id="approach"
+          aria-labelledby="approach-title"
+        >
+          <div class="container approach-layout">
+            <div class="approach-copy">
+              <p class="section-label">OUR APPROACH</p>
+              <h2 id="approach-title">
+                AIへの指示の前に、<br />仕事そのものを整理する。
+              </h2>
+              <p>
+                M&amp;Aの現場で多様な業務に触れてきた経験をもとに、<br
+                  class="desktop-break"
+                />業務フローや必要な情報、人が判断する部分を一緒に整理します。
               </p>
-              <div class="tags">
-                <span>最低契約期間なし</span><span>1契約1名</span>
-              </div>
+              <ol class="approach-steps" aria-label="支援の考え方">
+                <li>
+                  <span>01</span><strong>業務理解</strong
+                  ><small>仕事の流れを知る</small>
+                </li>
+                <li>
+                  <span>02</span><strong>分解</strong
+                  ><small>AIに任せる範囲を決める</small>
+                </li>
+                <li>
+                  <span>03</span><strong>実践</strong
+                  ><small>自社の業務で試す</small>
+                </li>
+              </ol>
             </div>
-            <ul class="features">
-              <li>Discordでの質問・助言</li>
-              <li>毎週のAI相談デー</li>
-              <li>月1回の実務持ち込み会</li>
-              <li>実践事例集・録画アーカイブ</li>
-            </ul>
-            <a class="button" href="#join" data-cta
-              >案内を受け取る <span aria-hidden="true">→</span></a
-            >
+            <figure class="approach-portrait">
+              <img
+                src="./assets/hashimoto-portrait.webp"
+                width="1145"
+                height="1374"
+                alt="VAIZO 橋本友太郎さん"
+                loading="lazy"
+              />
+              <figcaption>
+                <span>VAIZO</span><strong>橋本 友太郎</strong
+                ><small>YUTARO HASHIMOTO</small>
+              </figcaption>
+            </figure>
           </div>
-          <p class="price-note">
-            AIツール代は別途。録画は相談者の許可を得た回を掲載。<br />※税込・税別の表記は公開前に確定します。
-          </p>
-        </div>
-      </section>
+        </section>
 
+        <section
+          class="section membership dark"
+          id="membership"
+          aria-labelledby="membership-title"
+        >
+          <div class="container">
+            <p class="section-label">MEMBERSHIP</p>
+            <h2 id="membership-title">
+              実践を続けるための、<br class="mobile-break" />シンプルなプラン。
+            </h2>
+            <div class="price-panel">
+              <div class="price-summary">
+                <p class="plan-label">個人会員プラン</p>
+                <p class="price">
+                  <span>月額</span><strong>9,800</strong><span>円</span>
+                </p>
+                <div class="tags">
+                  <span>最低契約期間なし</span><span>1契約1名</span>
+                </div>
+              </div>
+              <ul class="features">
+                <li>Discordでの質問・助言</li>
+                <li>毎週のAI相談デー</li>
+                <li>月1回の実務持ち込み会</li>
+                <li>実践事例集・録画アーカイブ</li>
+              </ul>
+              <a class="button" href="#join" data-cta
+                >案内を受け取る <span aria-hidden="true">→</span></a
+              >
+            </div>
+            <p class="price-note">
+              AIツール代は別途。録画は相談者の許可を得た回を掲載。<br />※税込・税別の表記は公開前に確定します。
+            </p>
+          </div>
+        </section>
+      </div>
       <section class="section faq" id="faq" aria-labelledby="faq-title">
         <div class="container faq-layout">
           <div>
